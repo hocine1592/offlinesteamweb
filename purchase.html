@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam Offline - شراء حساب Steam</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="purchase.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="purchase-header">
+        <div class="header-container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-right"></i>
+                <span>العودة للرئيسية</span>
+            </a>
+            
+            <div class="header-logo">
+                <img src="weblogo.PNG" alt="Logo" class="header-logo-img">
+                <span>Steam Offline</span>
+            </div>
+            
+            <a href="games.html" class="games-link">
+                <i class="fas fa-gamepad"></i>
+                <span>مكتبة الألعاب</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="purchase-hero">
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fab fa-steam"></i>
+                <span>عرض حصري</span>
+            </div>
+            <h1 class="hero-title">
+                احصل على حساب <span class="highlight">Steam</span> الآن
+            </h1>
+            <p class="hero-subtitle">
+                استمتع بأكثر من <strong>1000+ لعبة</strong> جاهزة للعب بدون انتظار
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                مميزات الحساب
+            </h2>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>+1000 لعبة</h3>
+                        <p>مكتبة ضخمة تضم أكثر من ألف لعبة من مختلف الأنواع والتصنيفات</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-wifi-slash"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>اللعب بدون انترنت</h3>
+                        <p>العب ألعابك المفضلة في أي وقت بدون الحاجة للاتصال بالإنترنت</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>تحميل مباشر</h3>
+                        <p>حمّل الألعاب مباشرة بسرعات عالية بدون قيود</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>تحديثات مستمرة</h3>
+                        <p>ألعاب جديدة تُضاف باستمرار للمكتبة مجاناً</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>دعم فني 24/7</h3>
+                        <p>فريق دعم متاح على مدار الساعة لمساعدتك</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>ضمان الحساب</h3>
+                        <p>ضمان كامل على الحساب مع استبدال فوري في حالة أي مشكلة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-tags"></i>
+                باقات الأسعار
+            </h2>
+            
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <span class="plan-name">الباقة الأساسية</span>
+                        <div class="plan-price">
+                            <span class="currency">دج</span>
+                            <span class="amount">2500</span>
+                        </div>
+                        <span class="plan-period">دفعة واحدة</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> +200 لعبة</li>
+                            <li><i class="fas fa-check"></i> اللعب بدون انترنت</li>
+                            <li><i class="fas fa-check"></i> دعم فني</li>
+                            <li><i class="fas fa-check"></i> ضمان شهر</li>
+                            <li class="disabled"><i class="fas fa-times"></i> تحديثات الألعاب الجديدة</li>
+                        </ul>
+                        <button class="order-btn" onclick="openOrderModal('الباقة الأساسية', '2500')">
+                            <i class="fas fa-shopping-cart"></i>
+                            اطلب الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="pricing-card featured">
+                    <div class="popular-badge">الأكثر طلباً</div>
+                    <div class="card-header">
+                        <span class="plan-name">الباقة الاحترافية</span>
+                        <div class="plan-price">
+                            <span class="currency">دج</span>
+                            <span class="amount">5000</span>
+                        </div>
+                        <span class="plan-period">دفعة واحدة</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> +500 لعبة</li>
+                            <li><i class="fas fa-check"></i> اللعب بدون انترنت</li>
+                            <li><i class="fas fa-check"></i> دعم فني أولوية</li>
+                            <li><i class="fas fa-check"></i> ضمان 3 أشهر</li>
+                            <li><i class="fas fa-check"></i> تحديثات الألعاب الجديدة</li>
+                        </ul>
+                        <button class="order-btn featured-btn" onclick="openOrderModal('الباقة الاحترافية', '5000')">
+                            <i class="fas fa-shopping-cart"></i>
+                            اطلب الآن
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Ultimate Plan -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <span class="plan-name">الباقة المميزة</span>
+                        <div class="plan-price">
+                            <span class="currency">دج</span>
+                            <span class="amount">8000</span>
+                        </div>
+                        <span class="plan-period">دفعة واحدة</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> +1000 لعبة</li>
+                            <li><i class="fas fa-check"></i> اللعب بدون انترنت</li>
+                            <li><i class="fas fa-check"></i> دعم فني VIP</li>
+                            <li><i class="fas fa-check"></i> ضمان مدى الحياة</li>
+                            <li><i class="fas fa-check"></i> تحديثات مجانية للأبد</li>
+                        </ul>
+                        <button class="order-btn" onclick="openOrderModal('الباقة المميزة', '8000')">
+                            <i class="fas fa-shopping-cart"></i>
+                            اطلب الآن
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-credit-card"></i>
+                طريقة الدفع
+            </h2>
+            
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Algerie_poste_logo.svg/1200px-Algerie_poste_logo.svg.png" alt="Algérie Poste" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-icon" style="display: none;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <h3>بريد الجزائر - CCP</h3>
+                    <p>طريقة الدفع الوحيدة المتاحة حالياً هي عبر الحساب البريدي الجاري CCP</p>
+                    
+                    <div class="ccp-details">
+                        <div class="ccp-item">
+                            <span class="label">رقم الحساب CCP:</span>
+                            <span class="value" id="ccpNumber">00000000 00</span>
+                            <button class="copy-btn" onclick="copyToClipboard('ccpNumber')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="ccp-item">
+                            <span class="label">المفتاح:</span>
+                            <span class="value" id="ccpKey">00</span>
+                            <button class="copy-btn" onclick="copyToClipboard('ccpKey')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="ccp-item">
+                            <span class="label">اسم صاحب الحساب:</span>
+                            <span class="value" id="ccpName">الاسم الكامل</span>
+                            <button class="copy-btn" onclick="copyToClipboard('ccpName')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-steps">
+                        <h4><i class="fas fa-list-ol"></i> خطوات الدفع:</h4>
+                        <ol>
+                            <li>قم بتحويل المبلغ إلى حساب CCP المذكور أعلاه</li>
+                            <li>احتفظ بوصل التحويل (الإيصال)</li>
+                            <li>تواصل معنا عبر الطرق المتاحة أدناه</li>
+                            <li>أرسل صورة الإيصال مع معلوماتك</li>
+                            <li>استلم بيانات حسابك خلال 24 ساعة</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-phone-alt"></i>
+                تواصل معنا
+            </h2>
+            
+            <div class="contact-grid">
+                <a href="#" class="contact-card whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="#" class="contact-card telegram">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </a>
+                <a href="#" class="contact-card facebook">
+                    <i class="fab fa-facebook-messenger"></i>
+                    <span>Messenger</span>
+                </a>
+                <a href="#" class="contact-card instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Modal -->
+    <div class="order-modal" id="orderModal">
+        <div class="modal-overlay" onclick="closeOrderModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeOrderModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <i class="fas fa-shopping-bag"></i>
+                <h2>تأكيد الطلب</h2>
+            </div>
+            <div class="modal-body">
+                <div class="order-summary">
+                    <div class="order-item">
+                        <span class="label">الباقة:</span>
+                        <span class="value" id="orderPlan"></span>
+                    </div>
+                    <div class="order-item">
+                        <span class="label">السعر:</span>
+                        <span class="value" id="orderPrice"></span>
+                    </div>
+                </div>
+                
+                <div class="order-instructions">
+                    <p><i class="fas fa-info-circle"></i> لإتمام الطلب:</p>
+                    <ol>
+                        <li>قم بتحويل المبلغ إلى حساب CCP</li>
+                        <li>أرسل صورة الإيصال عبر أحد وسائل التواصل</li>
+                        <li>اذكر الباقة المختارة واسمك الكامل</li>
+                    </ol>
+                </div>
+                
+                <div class="order-actions">
+                    <a href="#" class="action-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        تواصل عبر واتساب
+                    </a>
+                    <a href="#" class="action-btn telegram">
+                        <i class="fab fa-telegram"></i>
+                        تواصل عبر تيليجرام
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="purchase-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="weblogo.PNG" alt="Logo">
+                    <p>Steam Offline - منصة الألعاب الأفضل</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="games.html">الألعاب</a>
+                    <a href="#">الدعم</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Steam Offline. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="purchase.js"></script>
+</body>
+</html>

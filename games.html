@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam Offline - مكتبة الألعاب المجانية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="games.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="games-header">
+        <div class="header-container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-right"></i>
+                <span>العودة للرئيسية</span>
+            </a>
+            
+            <div class="header-logo">
+                <img src="weblogo.PNG" alt="Logo" class="header-logo-img">
+                <span>Steam Offline</span>
+            </div>
+            
+            <div class="header-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن لعبة...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">
+                <i class="fas fa-gamepad"></i>
+                مكتبة الألعاب <span class="highlight">المتوفرة</span>
+            </h1>
+            <p class="page-subtitle">اكتشف أفضل الألعاب المتوفرة للعب الآن</p>
+            
+            <!-- Filters -->
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label>التصنيف:</label>
+                    <select id="categoryFilter">
+                        <option value="">الكل</option>
+                        <option value="mmorpg">MMORPG</option>
+                        <option value="shooter">Shooter</option>
+                        <option value="moba">MOBA</option>
+                        <option value="strategy">Strategy</option>
+                        <option value="racing">Racing</option>
+                        <option value="sports">Sports</option>
+                        <option value="social">Social</option>
+                        <option value="card">Card Games</option>
+                        <option value="fighting">Fighting</option>
+                        <option value="fantasy">Fantasy</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>المنصة:</label>
+                    <select id="platformFilter">
+                        <option value="">الكل</option>
+                        <option value="pc">PC (Windows)</option>
+                        <option value="browser">Browser</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>الترتيب:</label>
+                    <select id="sortFilter">
+                        <option value="relevance">الأكثر صلة</option>
+                        <option value="popularity">الأكثر شعبية</option>
+                        <option value="release-date">تاريخ الإصدار</option>
+                        <option value="alphabetical">أبجدياً</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section class="games-library">
+        <div class="container">
+            <!-- Loading State -->
+            <div class="loading-container" id="loadingContainer">
+                <div class="loader">
+                    <div class="loader-ring"></div>
+                    <div class="loader-ring"></div>
+                    <div class="loader-ring"></div>
+                </div>
+                <p>جاري تحميل الألعاب...</p>
+            </div>
+            
+            <!-- Games Count -->
+            <div class="games-count" id="gamesCount" style="display: none;">
+                <span id="countNumber">0</span> لعبة متاحة
+            </div>
+            
+            <!-- Games Grid -->
+            <div class="games-grid" id="gamesGrid"></div>
+            
+            <!-- Error State -->
+            <div class="error-container" id="errorContainer" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>حدث خطأ أثناء تحميل الألعاب</h3>
+                <p>يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى</p>
+                <button class="retry-btn" onclick="fetchGames()">
+                    <i class="fas fa-redo"></i>
+                    إعادة المحاولة
+                </button>
+            </div>
+            
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>لا توجد نتائج</h3>
+                <p>جرب تغيير معايير البحث أو التصفية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modal -->
+    <div class="game-modal" id="gameModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-info">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <i class="fas fa-tag"></i>
+                        <span id="modalGenre"></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-desktop"></i>
+                        <span id="modalPlatform"></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span id="modalPublisher"></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar"></i>
+                        <span id="modalRelease"></span>
+                    </div>
+                </div>
+                <a id="modalLink" href="purchase.html" class="play-game-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    اشتري الحساب الآن
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="games-footer">
+        <div class="container">
+            <p>البيانات مقدمة من <a href="https://www.freetogame.com" target="_blank">FreeToGame</a></p>
+            <p>© 2026 Steam Offline. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="games.js"></script>
+</body>
+</html>
