@@ -4,6 +4,9 @@
 
 let allGames = [];
 let filteredGames = [];
+let currentPage = 1;
+const GAMES_PER_PAGE = 12;
+let isApiError = false;
 
 // DOM Elements
 const gamesGrid = document.getElementById('gamesGrid');
@@ -57,6 +60,7 @@ function debounce(func, wait) {
 // Fetch Games from API
 async function fetchGames() {
     showLoading();
+    isApiError = false;
     
     try {
         // Try direct API first
@@ -69,11 +73,12 @@ async function fetchGames() {
         }
         
         if (!response.ok) {
-            throw new Error('Failed to fetch games');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         allGames = await response.json();
         filteredGames = [...allGames];
+        currentPage = 1;
         
         hideLoading();
         displayGames(filteredGames);
@@ -81,8 +86,9 @@ async function fetchGames() {
         
     } catch (error) {
         console.error('Error fetching games:', error);
+        isApiError = true;
         hideLoading();
-        showError();
+        showError(error.message);
         
         // Fallback: Show sample data if API fails
         loadSampleData();
@@ -161,15 +167,19 @@ function loadSampleData() {
     ];
     
     filteredGames = [...allGames];
+    currentPage = 1;
     hideLoading();
-    hideError();
     displayGames(filteredGames);
     showGamesCount(filteredGames.length);
 }
 
-// Display Games
+// Display Games with pagination
 function displayGames(games) {
     gamesGrid.innerHTML = '';
+    
+    // Remove existing load more button and pagination info
+    const existingLoadMore = document.querySelector('.load-more-container');
+    if (existingLoadMore) existingLoadMore.remove();
     
     if (games.length === 0) {
         noResults.style.display = 'block';
@@ -178,17 +188,30 @@ function displayGames(games) {
     
     noResults.style.display = 'none';
     
-    games.forEach((game, index) => {
+    // Calculate pagination
+    const startIndex = 0;
+    const endIndex = currentPage * GAMES_PER_PAGE;
+    const gamesToShow = games.slice(startIndex, endIndex);
+    
+    gamesToShow.forEach((game, index) => {
         const card = createGameCard(game, index);
         gamesGrid.appendChild(card);
     });
+    
+    // Add load more button if there are more games
+    if (endIndex < games.length) {
+        addLoadMoreButton(games.length, endIndex);
+    }
+    
+    // Update games count display
+    updateGamesCountDisplay(games.length, endIndex);
 }
 
 // Create Game Card
 function createGameCard(game, index) {
     const card = document.createElement('div');
     card.className = 'game-card-lib';
-    card.style.animationDelay = `${index * 0.08}s`;
+    card.style.animationDelay = `${(index % GAMES_PER_PAGE) * 0.08}s`;
     card.onclick = () => openModal(game);
     
     const platformBadge = game.platform?.includes('Browser') ? 'Browser' : 'PC';
@@ -197,8 +220,8 @@ function createGameCard(game, index) {
         <div class="card-image">
             <img src="${game.thumbnail}" alt="${game.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/365x206/1a1a1a/00ff88?text=No+Image'">
             <div class="card-overlay">
-                <button class="card-play-btn">
-                    <i class="fas fa-play"></i>
+                <button class="card-play-btn" aria-label="عرض تفاصيل ${game.title}">
+                    <i class="fas fa-play" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="card-badges">
@@ -212,6 +235,37 @@ function createGameCard(game, index) {
     `;
     
     return card;
+}
+
+// Add Load More Button
+function addLoadMoreButton(totalGames, currentlyShown) {
+    const loadMoreContainer = document.createElement('div');
+    loadMoreContainer.className = 'load-more-container';
+    loadMoreContainer.innerHTML = `
+        <button class="load-more-btn" aria-label="تحميل المزيد من الألعاب">
+            <i class="fas fa-plus-circle" aria-hidden="true"></i>
+            تحميل المزيد
+        </button>
+    `;
+    
+    loadMoreContainer.querySelector('.load-more-btn').addEventListener('click', () => {
+        currentPage++;
+        displayGames(filteredGames);
+    });
+    
+    gamesGrid.parentNode.appendChild(loadMoreContainer);
+}
+
+// Update Games Count Display
+function updateGamesCountDisplay(totalGames, currentlyShown) {
+    const shown = Math.min(currentlyShown, totalGames);
+    
+    // Check if sample games label should be shown
+    if (isApiError) {
+        gamesCount.innerHTML = `<span class="sample-label">نماذج من الألعاب المتاحة</span> - عرض <span id="countNumber">${shown}</span> من ${totalGames} لعبة`;
+    } else {
+        gamesCount.innerHTML = `عرض <span id="countNumber">${shown}</span> من ${totalGames} لعبة`;
+    }
 }
 
 // Filter Games
@@ -247,6 +301,8 @@ function filterGames() {
             break;
     }
     
+    // Reset pagination when filtering
+    currentPage = 1;
     displayGames(filteredGames);
     showGamesCount(filteredGames.length);
 }
@@ -256,6 +312,7 @@ function openModal(game) {
     const modal = document.getElementById('gameModal');
     
     document.getElementById('modalImage').src = game.thumbnail;
+    document.getElementById('modalImage').alt = game.title;
     document.getElementById('modalTitle').textContent = game.title;
     document.getElementById('modalDescription').textContent = game.short_description || 'لا يوجد وصف متاح';
     document.getElementById('modalGenre').textContent = game.genre || 'غير محدد';
@@ -282,13 +339,21 @@ function showLoading() {
     noResults.style.display = 'none';
     gamesCount.style.display = 'none';
     gamesGrid.innerHTML = '';
+    
+    // Remove any existing load more button
+    const existingLoadMore = document.querySelector('.load-more-container');
+    if (existingLoadMore) existingLoadMore.remove();
 }
 
 function hideLoading() {
     loadingContainer.style.display = 'none';
 }
 
-function showError() {
+function showError(errorMessage) {
+    const errorText = errorContainer.querySelector('p');
+    if (errorText) {
+        errorText.textContent = `حدث خطأ: ${errorMessage || 'يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى'}`;
+    }
     errorContainer.style.display = 'block';
 }
 
@@ -298,5 +363,4 @@ function hideError() {
 
 function showGamesCount(count) {
     gamesCount.style.display = 'block';
-    countNumber.textContent = count;
 }

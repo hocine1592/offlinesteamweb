@@ -4,6 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steam Offline - العب بدون اتصال</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Steam Offline - المنصة الأفضل للعب ألعابك المفضلة بدون اتصال. احصل على حساب Steam مع أكثر من 1000 لعبة بأسعار استثنائية للجزائريين.">
+    <meta name="keywords" content="Steam, ألعاب, حساب ستيم, الجزائر, ألعاب بدون انترنت, Steam Offline, شراء حساب ستيم">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://steamoffline.dz/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Steam Offline - العب بدون اتصال">
+    <meta property="og:description" content="المنصة الأفضل للعب ألعابك المفضلة بدون اتصال. احصل على حساب Steam مع أكثر من 1000 لعبة بأسعار استثنائية.">
+    <meta property="og:image" content="weblogo.png">
+    <meta property="og:url" content="https://steamoffline.dz/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_DZ">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Steam Offline - العب بدون اتصال">
+    <meta name="twitter:description" content="المنصة الأفضل للعب ألعابك المفضلة بدون اتصال. احصل على حساب Steam مع أكثر من 1000 لعبة بأسعار استثنائية.">
+    <meta name="twitter:image" content="weblogo.png">
+    
+    <!-- Preconnect for external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="weblogo.png">
+    <link rel="preload" as="image" href="arcraiders.png">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="games.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -11,15 +41,15 @@
 </head>
 <body>
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" role="banner">
         <div class="hero-background">
-            <img src="arcraiders.png" alt="Background" class="hero-bg-image">
+            <img src="arcraiders.png" alt="خلفية لعبة Arc Raiders" class="hero-bg-image">
             <div class="hero-overlay"></div>
         </div>
         
         <div class="hero-content">
             <div class="logo-container">
-                <img src="weblogo.png" alt="Steam Offline Logo" class="main-logo">
+                <img src="weblogo.png" alt="شعار Steam Offline" class="main-logo">
             </div>
             
             <span class="tag">منصة الألعاب</span>
@@ -29,22 +59,22 @@
                 <br>مصممة لتحويل طريقة لعبك إلى تجربة استثنائية
             </p>
             
-            <div class="hero-meta">
-                <div class="meta-item">
-                    <i class="fas fa-gamepad"></i>
+            <div class="hero-meta" role="list">
+                <div class="meta-item" role="listitem">
+                    <i class="fas fa-gamepad" aria-hidden="true"></i>
                     <span>آلاف الألعاب</span>
                 </div>
-                <div class="meta-item">
-                    <i class="fas fa-download"></i>
+                <div class="meta-item" role="listitem">
+                    <i class="fas fa-download" aria-hidden="true"></i>
                     <span>تحميل سريع</span>
                 </div>
-                <div class="meta-item">
-                    <i class="fas fa-shield-alt"></i>
+                <div class="meta-item" role="listitem">
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
                     <span>آمن 100%</span>
                 </div>
             </div>
             
-            <a href="#overview" class="scroll-indicator">
+            <a href="#overview" class="scroll-indicator" aria-label="انتقل لقسم نظرة عامة" title="اكتشف المزيد">
                 <div class="mouse">
                     <div class="wheel"></div>
                 </div>
@@ -54,48 +84,48 @@
     </section>
 
     <!-- Navbar - Between Sections -->
-    <nav class="main-navbar" id="navbar">
+    <nav class="main-navbar" id="navbar" role="navigation" aria-label="القائمة الرئيسية">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="weblogo.png" alt="Logo" class="nav-logo-img">
+                <img src="weblogo.png" alt="شعار Steam Offline" class="nav-logo-img">
                 <span class="nav-brand">Steam Offline</span>
             </div>
             
-            <ul class="nav-links">
-                <li><a href="#hero" class="nav-link active">
-                    <i class="fas fa-home"></i>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#hero" class="nav-link active" role="menuitem" title="الرئيسية">
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     <span>الرئيسية</span>
                 </a></li>
-                <li><a href="#overview" class="nav-link">
-                    <i class="fas fa-info-circle"></i>
+                <li role="none"><a href="#overview" class="nav-link" role="menuitem" title="نظرة عامة">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i>
                     <span>نظرة عامة</span>
                 </a></li>
-                <li><a href="#features" class="nav-link">
-                    <i class="fas fa-star"></i>
+                <li role="none"><a href="#features" class="nav-link" role="menuitem" title="المميزات">
+                    <i class="fas fa-star" aria-hidden="true"></i>
                     <span>المميزات</span>
                 </a></li>
-                <li><a href="#games" class="nav-link">
-                    <i class="fas fa-gamepad"></i>
+                <li role="none"><a href="#games" class="nav-link" role="menuitem" title="الألعاب">
+                    <i class="fas fa-gamepad" aria-hidden="true"></i>
                     <span>الألعاب</span>
                 </a></li>
-                <li><a href="#download" class="nav-link">
-                    <i class="fas fa-download"></i>
+                <li role="none"><a href="#download" class="nav-link" role="menuitem" title="الشراء">
+                    <i class="fas fa-download" aria-hidden="true"></i>
                     <span>الشراء</span>
                 </a></li>
             </ul>
             
             <div class="nav-actions">
-                <button class="nav-btn nav-btn-outline">
-                    <i class="fas fa-sign-in-alt"></i>
+                <button class="nav-btn nav-btn-outline" aria-label="تسجيل الدخول">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
                     تسجيل الدخول
                 </button>
-                <button class="nav-btn nav-btn-primary">
-                    <i class="fas fa-rocket"></i>
+                <button class="nav-btn nav-btn-primary" aria-label="ابدأ الآن">
+                    <i class="fas fa-rocket" aria-hidden="true"></i>
                     ابدأ الآن
                 </button>
             </div>
             
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -110,7 +140,7 @@
     </div>
 
     <!-- Overview Section -->
-    <section class="overview-section" id="overview">
+    <section class="overview-section" id="overview" role="region" aria-labelledby="overview-title">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">/01</span>
@@ -118,15 +148,15 @@
             </div>
             
             <div class="overview-content">
-                <h2 class="section-title">
+                <h2 class="section-title" id="overview-title">
                     Steam Offline هو <span class="highlight">حساب ألعاب يمكنك</span>
                     <br>من عيش تجربة اللعب الخاصة بك
                     <br><span class="highlight">بأسعار استثنائية.</span>
                 </h2>
             </div>
             
-            <div class="info-grid">
-                <div class="info-card" data-aos="fade-up">
+            <div class="info-grid" role="list">
+                <div class="info-card" data-aos="fade-up" role="listitem">
                     <h3 class="info-label">حول المنصة</h3>
                     <p class="info-text">
                         Steam Offline هو حساب ألعاب يمنحك تجربة لعب خاصة بك
@@ -135,7 +165,7 @@
                     </p>
                 </div>
                 
-                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100" role="listitem">
                     <h3 class="info-label">المشكلة</h3>
                     <p class="info-text">
                         <strong>ارتفاع تكلفة الألعاب</strong> يحرم الكثيرين من عيش تجربتهم
@@ -147,7 +177,7 @@
                     </p>
                 </div>
                 
-                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200" role="listitem">
                     <h3 class="info-label">الحل</h3>
                     <p class="info-text">
                         نقدم <strong>حساب ألعاب مخصص</strong> يمنحك لعب تجربتك الخاصة
@@ -160,45 +190,45 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features-section" id="features">
+    <section class="features-section" id="features" role="region" aria-labelledby="features-title">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">/02</span>
                 <span class="section-label">Features</span>
             </div>
             
-            <h2 class="section-title centered">
+            <h2 class="section-title centered" id="features-title">
                 مميزات <span class="highlight">استثنائية</span>
             </h2>
             
-            <div class="features-grid">
-                <div class="feature-card" data-aos="zoom-in">
+            <div class="features-grid" role="list">
+                <div class="feature-card" data-aos="zoom-in" role="listitem">
                     <div class="feature-icon">
-                        <i class="fas fa-id-card"></i>
+                        <i class="fas fa-id-card" aria-hidden="true"></i>
                     </div>
                     <h3>حساب ألعاب مخصص</h3>
                     <p>عِش تجربتك الخاصة عبر حساب جاهز بسعر يناسبك</p>
                 </div>
                 
-                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100" role="listitem">
                     <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
                     </div>
                     <h3>إعداد سريع وبسيط</h3>
                     <p>ابدأ اللعب فوراً دون خطوات معقدة أو اشتراكات مرهقة</p>
                 </div>
                 
-                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200" role="listitem">
                     <div class="feature-icon">
-                        <i class="fas fa-user-gear"></i>
+                        <i class="fas fa-user-gear" aria-hidden="true"></i>
                     </div>
                     <h3>واجهة شخصية عصرية</h3>
                     <p>تصميم أنيق يركز على تجربتك ويجعل الوصول لمكتبتك أسهل</p>
                 </div>
                 
-                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300" role="listitem">
                     <div class="feature-icon">
-                        <i class="fas fa-tags"></i>
+                        <i class="fas fa-tags" aria-hidden="true"></i>
                     </div>
                     <h3>قيمة وتحديثات مستمرة</h3>
                     <p>ألعاب تُضاف باستمرار مع أسعار استثنائية تحافظ على ميزانيتك</p>
@@ -208,23 +238,23 @@
     </section>
 
     <!-- Games Section -->
-    <section class="games-section" id="games">
+    <section class="games-section" id="games" role="region" aria-labelledby="games-title">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">/03</span>
                 <span class="section-label">Games</span>
             </div>
             
-            <h2 class="section-title centered">
+            <h2 class="section-title centered" id="games-title">
                 مكتبة <span class="highlight">الألعاب</span>
             </h2>
             
-            <div class="games-showcase">
-                <div class="game-card" data-aos="fade-up">
+            <div class="games-showcase" role="list">
+                <div class="game-card" data-aos="fade-up" role="listitem">
                     <div class="game-image">
-                        <img src="arcraiders.png" alt="Arc Raiders">
+                        <img src="arcraiders.png" alt="لعبة Arc Raiders - لعبة أكشن وإطلاق نار" loading="lazy">
                         <div class="game-overlay">
-                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="play-btn" aria-label="عرض تفاصيل Arc Raiders"><i class="fas fa-play" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <div class="game-info">
@@ -233,10 +263,10 @@
                     </div>
                 </div>
                 
-                <div class="game-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="game-card" data-aos="fade-up" data-aos-delay="100" role="listitem">
                     <div class="game-image placeholder">
                         <div class="game-overlay">
-                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="play-btn" aria-label="لعبة قادمة قريباً"><i class="fas fa-play" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <div class="game-info">
@@ -245,10 +275,10 @@
                     </div>
                 </div>
                 
-                <div class="game-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="game-card" data-aos="fade-up" data-aos-delay="200" role="listitem">
                     <div class="game-image placeholder">
                         <div class="game-overlay">
-                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="play-btn" aria-label="لعبة قادمة قريباً"><i class="fas fa-play" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <div class="game-info">
@@ -259,25 +289,25 @@
             </div>
             
             <div class="games-cta">
-                <a href="games.html" class="view-all-games-btn">
-                    <i class="fas fa-gamepad"></i>
+                <a href="games.html" class="view-all-games-btn" title="عرض جميع الألعاب المتوفرة">
+                    <i class="fas fa-gamepad" aria-hidden="true"></i>
                     <span>عرض جميع الألعاب المتوفرة</span>
-                    <i class="fas fa-arrow-left"></i>
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Download Section -->
-    <section class="download-section" id="download">
+    <section class="download-section" id="download" role="region" aria-labelledby="download-title">
         <div class="container">
             <div class="download-card">
                 <div class="download-content">
-                    <h2>جاهز للانطلاق؟</h2>
+                    <h2 id="download-title">جاهز للانطلاق؟</h2>
                     <p>اشتري Steam Offline الآن واستمتع بأفضل تجربة ألعاب</p>
                     <div class="download-buttons">
-                        <a href="purchase.html" class="download-btn primary">
-                            <i class="fas fa-shopping-cart"></i>
+                        <a href="purchase.html" class="download-btn primary" title="اشتري حساب Steam الآن">
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                             <span>
                                 <small>احصل على</small>
                                 حساب Steam الآن
@@ -286,30 +316,30 @@
                     </div>
                 </div>
                 <div class="download-decoration">
-                    <img src="weblogo.png" alt="Logo" class="floating-logo">
+                    <img src="weblogo.png" alt="شعار Steam Offline" class="floating-logo" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="weblogo.png" alt="Logo" class="footer-logo">
+                    <img src="weblogo.png" alt="شعار Steam Offline" class="footer-logo" loading="lazy">
                     <p>منصة الألعاب الأفضل للعب بدون اتصال</p>
                 </div>
-                <div class="footer-links">
-                    <a href="#">الخصوصية</a>
-                    <a href="#">الشروط</a>
-                    <a href="#">الدعم</a>
-                    <a href="#">التواصل</a>
-                </div>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                <nav class="footer-links" aria-label="روابط التذييل">
+                    <a href="#" title="سياسة الخصوصية">الخصوصية</a>
+                    <a href="#" title="الشروط والأحكام">الشروط</a>
+                    <a href="#" title="الدعم الفني">الدعم</a>
+                    <a href="#" title="تواصل معنا">التواصل</a>
+                </nav>
+                <div class="footer-social" role="list" aria-label="روابط التواصل الاجتماعي">
+                    <a href="#" role="listitem" aria-label="Discord" title="تابعنا على Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
+                    <a href="#" role="listitem" aria-label="Telegram" title="تابعنا على Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+                    <a href="#" role="listitem" aria-label="YouTube" title="تابعنا على YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -317,6 +347,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="العودة لأعلى الصفحة" title="العودة لأعلى">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
