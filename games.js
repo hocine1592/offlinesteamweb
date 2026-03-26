@@ -261,10 +261,32 @@ function updateGamesCountDisplay(totalGames, currentlyShown) {
     const shown = Math.min(currentlyShown, totalGames);
     
     // Check if sample games label should be shown
+    // Use textContent to prevent XSS
     if (isApiError) {
-        gamesCount.innerHTML = `<span class="sample-label">نماذج من الألعاب المتاحة</span> - عرض <span id="countNumber">${shown}</span> من ${totalGames} لعبة`;
+        const sampleLabel = document.createElement('span');
+        sampleLabel.className = 'sample-label';
+        sampleLabel.textContent = 'نماذج من الألعاب المتاحة';
+        
+        gamesCount.innerHTML = '';
+        gamesCount.appendChild(sampleLabel);
+        gamesCount.appendChild(document.createTextNode(' - عرض '));
+        
+        const countSpan = document.createElement('span');
+        countSpan.id = 'countNumber';
+        countSpan.textContent = shown;
+        gamesCount.appendChild(countSpan);
+        
+        gamesCount.appendChild(document.createTextNode(` من ${totalGames} لعبة`));
     } else {
-        gamesCount.innerHTML = `عرض <span id="countNumber">${shown}</span> من ${totalGames} لعبة`;
+        gamesCount.innerHTML = '';
+        gamesCount.appendChild(document.createTextNode('عرض '));
+        
+        const countSpan = document.createElement('span');
+        countSpan.id = 'countNumber';
+        countSpan.textContent = shown;
+        gamesCount.appendChild(countSpan);
+        
+        gamesCount.appendChild(document.createTextNode(` من ${totalGames} لعبة`));
     }
 }
 
@@ -312,7 +334,7 @@ function openModal(game) {
     const modal = document.getElementById('gameModal');
     
     document.getElementById('modalImage').src = game.thumbnail;
-    document.getElementById('modalImage').alt = game.title;
+    document.getElementById('modalImage').alt = `صورة لعبة ${game.title}`;
     document.getElementById('modalTitle').textContent = game.title;
     document.getElementById('modalDescription').textContent = game.short_description || 'لا يوجد وصف متاح';
     document.getElementById('modalGenre').textContent = game.genre || 'غير محدد';

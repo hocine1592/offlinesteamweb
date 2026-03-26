@@ -55,16 +55,26 @@ function validateForm() {
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('whatsappNumber');
     
-    // Validate name
-    if (!nameInput.value.trim()) {
+    // Validate name (at least 2 characters)
+    if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
         document.getElementById('nameError').classList.add('visible');
         nameInput.classList.add('error');
         isValid = false;
     }
     
-    // Validate phone (basic validation for Algerian numbers)
-    const phoneRegex = /^(0|\+213|213)?[5-7]\d{8}$/;
-    const cleanPhone = phoneInput.value.replace(/\s/g, '');
+    // Validate phone - normalize and validate Algerian numbers
+    // Accepts: 0555123456, 05 55 12 34 56, +213555123456, 213555123456
+    let cleanPhone = phoneInput.value.replace(/[\s\-\.]/g, '');
+    
+    // Normalize to local format (remove country code if present)
+    if (cleanPhone.startsWith('+213')) {
+        cleanPhone = '0' + cleanPhone.substring(4);
+    } else if (cleanPhone.startsWith('213')) {
+        cleanPhone = '0' + cleanPhone.substring(3);
+    }
+    
+    // Validate: must be 10 digits starting with 05, 06, or 07
+    const phoneRegex = /^0[5-7]\d{8}$/;
     if (!cleanPhone || !phoneRegex.test(cleanPhone)) {
         document.getElementById('phoneError').classList.add('visible');
         phoneInput.classList.add('error');
@@ -121,6 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Sanitize string for safe URL usage
+function sanitizeForUrl(str) {
+    if (!str) return '';
+    // Remove potentially dangerous characters and limit length
+    return str.replace(/[<>"'&\\]/g, '').substring(0, 100);
+}
+
 // Show order confirmation modal
 function showOrderConfirmation() {
     const modal = document.getElementById('orderModal');
@@ -130,13 +147,18 @@ function showOrderConfirmation() {
     document.getElementById('orderCustomerName').textContent = customerInfo.name;
     document.getElementById('orderWhatsapp').textContent = customerInfo.whatsapp;
     
-    // Update WhatsApp link with pre-filled message
+    // Sanitize and update WhatsApp link with pre-filled message
+    const safePlan = sanitizeForUrl(customerInfo.plan);
+    const safePrice = sanitizeForUrl(customerInfo.price);
+    const safeName = sanitizeForUrl(customerInfo.name);
+    const safeWhatsapp = sanitizeForUrl(customerInfo.whatsapp);
+    
     const whatsappMessage = encodeURIComponent(
         `مرحباً، أريد شراء حساب ستيم\n` +
-        `الباقة: ${customerInfo.plan}\n` +
-        `السعر: ${customerInfo.price} دج\n` +
-        `الاسم: ${customerInfo.name}\n` +
-        `رقم الواتساب: ${customerInfo.whatsapp}`
+        `الباقة: ${safePlan}\n` +
+        `السعر: ${safePrice} دج\n` +
+        `الاسم: ${safeName}\n` +
+        `رقم الواتساب: ${safeWhatsapp}`
     );
     const whatsappBtn = document.getElementById('orderWhatsappBtn');
     if (whatsappBtn) {
