@@ -354,6 +354,53 @@
     font-size: 20px;
 }
 
+.games-count .sample-label {
+    display: inline-block;
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+/* Load More Button */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md, 12px);
+    color: var(--text-primary);
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal, 0.3s ease);
+}
+
+.load-more-btn:hover {
+    background: var(--gradient-primary);
+    border-color: var(--primary-color);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--primary-glow);
+}
+
+.load-more-btn i {
+    font-size: 18px;
+}
+
 /* Games Grid */
 .games-grid {
     display: grid;
